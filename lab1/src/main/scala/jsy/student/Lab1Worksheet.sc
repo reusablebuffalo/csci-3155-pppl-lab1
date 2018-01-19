@@ -15,6 +15,14 @@
 val n = 1 + 1
 n + 3
 
+val a:Boolean = false
+val b:Boolean = true
+println {
+  // should return true if exactly one is true (XOR)
+  (a && !b) || (!a && b)
+}
+
+
 // The worksheet is built with all of the project files, so we can call
 // a function from your jsy.student.Lab1 object (in Lab1.scala).
 jsy.student.Lab1.plus(3, 4)

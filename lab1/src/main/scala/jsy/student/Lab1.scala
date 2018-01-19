@@ -8,9 +8,9 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
 
   /*
    * CSCI 3155: Lab 1
-   * <Your Name>
+   * Ian Smith
    *
-   * Partner: <Your Partner's Name>
+   * Partner: Noah
    * Collaborators: <Any Collaborators>
    */
 
@@ -55,11 +55,26 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
 
   /* Exercises */
 
-  def abs(n: Double): Double = ???
+  def abs(n: Double): Double = {
+    if(n>=0) n // no return keywords needed
+    else -n     // no return keyword needed (thanks, IntelliJ)
 
-  def xor(a: Boolean, b: Boolean): Boolean = ???
+  }
 
-  def repeat(s: String, n: Int): String = ???
+  def xor(a: Boolean, b: Boolean): Boolean = {
+    (a && !b) || (b && !a) // exactly one must be true in order to return true
+  }
+
+  def repeat(s: String, n: Int): String = {
+    require(n >= 0) // do not allow negative
+    if(n == 0){ // repeat no times (0 or less)
+      ""
+    } else if (n == 1) { // repeat once
+      s
+    } else {            // use recursion
+      s + repeat(s,n-1)
+    }
+  }
 
   def sqrtStep(c: Double, xn: Double): Double = ???
 
