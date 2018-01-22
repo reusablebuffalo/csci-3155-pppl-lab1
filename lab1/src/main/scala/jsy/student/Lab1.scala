@@ -55,16 +55,21 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
 
   /* Exercises */
 
-  def abs(n: Double): Double = {
+  def abs(n: Double): Double =
     if(n>=0) n // no return keywords needed
     else -n     // no return keyword needed (thanks, IntelliJ)
 
-  }
-
   def xor(a: Boolean, b: Boolean): Boolean = {
-    (a && !b) || (b && !a) // exactly one must be true in order to return true
+    //(a && !b) || (b && !a) // exactly one must be true in order to return true
+    // without using Boolean operators
+    if (a) { // if a then b must be false
+      if (b) false else true
+    }
+    else { // if !a then b must be true
+      if (b) true else false
+    }
   }
-
+  
   def repeat(s: String, n: Int): String = {
     require(n >= 0) // do not allow negative
     if(n == 0){ // repeat no times (0 or less)
