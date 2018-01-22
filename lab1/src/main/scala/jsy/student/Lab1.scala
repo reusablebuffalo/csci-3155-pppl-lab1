@@ -69,16 +69,18 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
       if (b) true else false
     }
   }
-  
+
   def repeat(s: String, n: Int): String = {
     require(n >= 0) // do not allow negative
-    if(n == 0){ // repeat no times (0 or less)
+    /*if(n == 0){ // repeat no times (0 or less)
       ""
     } else if (n == 1) { // repeat once
       s
     } else {            // use recursion
       s + repeat(s,n-1)
-    }
+    }*/
+    // more scala-like
+    if (n == 0) "" else s + repeat(s,n-1)
   }
 
   def sqrtStep(c: Double, xn: Double): Double = ???
