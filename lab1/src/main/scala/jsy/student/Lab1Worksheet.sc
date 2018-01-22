@@ -23,6 +23,8 @@ println {
 }
 
 
+scala.math.pow(2,5)
+
 // The worksheet is built with all of the project files, so we can call
 // a function from your jsy.student.Lab1 object (in Lab1.scala).
 jsy.student.Lab1.plus(3, 4)

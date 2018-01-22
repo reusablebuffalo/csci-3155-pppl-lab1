@@ -83,7 +83,7 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
     if (n == 0) "" else s + repeat(s,n-1)
   }
 
-  def sqrtStep(c: Double, xn: Double): Double = ???
+  def sqrtStep(c: Double, xn: Double): Double = xn - (scala.math.pow(xn,2) - c)/(2*xn) // scala.math.pow to square xn
 
   def sqrtN(c: Double, x0: Double, n: Int): Double = ???
 
