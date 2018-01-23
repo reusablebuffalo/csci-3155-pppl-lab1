@@ -85,11 +85,14 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
 
   def sqrtStep(c: Double, xn: Double): Double = xn - (scala.math.pow(xn,2) - c)/(2*xn) // scala.math.pow to square xn
 
+  def sqrtHelper(c : Double, xi : Double, n : Double) : Double = { // helper function
+    if (n == 0) xi else sqrtHelper(c, sqrtStep(c,xi), n-1) // call helper function recursively
+    // n = 0 is base case, then just find next step with sqrtStep and call recursively (n times)
+  }
 
   def sqrtN(c: Double, x0: Double, n: Int): Double = {
     require(n>=0)           // n can't be negative
-    if (n == 0) x0   // if n = 0, return initial approx (base case)
-    else sqrtN(c, sqrtStep(c,x0), n-1) // recursively call sqrtN() on next step, with n-1
+    sqrtHelper(c, x0, n)    // call helper function! (a recursive function)
   }
 
   def sqrtErr(c: Double, x0: Double, epsilon: Double): Double = ???
