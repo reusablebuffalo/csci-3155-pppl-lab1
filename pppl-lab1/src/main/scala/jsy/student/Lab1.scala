@@ -120,6 +120,7 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
       case Empty => true
       case Node(l, d, r) => (d >= min) && (d < max) && check(l, min, d) && check(r, d, max)
     }
+
     check(t, Int.MinValue, Int.MaxValue)
   }
 
@@ -134,8 +135,9 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
     (t: @unchecked) match {
       case Node(Empty, d, r) => (r, d)
       case Node(l, d, r) =>
-        val (l1, m) = deleteMin(l) // returns right subtree of node to be deleted (and its value)
-        (Node(l1, d ,r), m) // this right subtree becomes parent's left subtree and parent's right subtree remains the same
+        val (l1, m) = deleteMin(l)  // returns right subtree of node to be deleted (and its value)
+        (Node(l1, d ,r), m)         // this right subtree becomes parent's left subtree and
+                                    // parent's right subtree remains the same
     }
   }
 
