@@ -209,6 +209,7 @@ class Lab1Spec(lab1: Lab1Like) extends FlatSpec {
     // custom test case
     assert(delete(t13, 3) === Node(Node(Empty,1,Node(Node(Empty,2,Empty),4,Empty)),5,Node(Node(Empty,6,Empty),7, Node(Empty, 8, Empty))))
     assert(delete(t13, 1) === Node(Node(Empty,2,Node(Empty,3,Node(Empty,4,Empty))),5,Node(Node(Empty,6,Empty),7, Node(Empty, 8, Empty))))
+    assert(delete(Node(Node(Empty,0,Empty),3, Empty),3) === Node(Empty, 0, Empty)) // what if r is empty?
   }
 
   // Some more testing code that uses the Scala List libray.  The function 'treeFromList'
