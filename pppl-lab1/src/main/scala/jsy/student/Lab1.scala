@@ -144,17 +144,22 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
   def delete(t: SearchTree, n: Int): SearchTree = t match {
     case Empty => t
     case Node(Empty, d, Empty) => if (d == n) Empty else t // if reach leaf node, return empty if node to be deleted otherwise return leaf node
-    case Node(l, d, r) => if (d < n) Node(l, d, delete(r,n)) else if (d > n) Node(delete(l,n), d, r) else {
-      val (r1, m) = deleteMin(r)
-      Node(l, m, r1)
+    case Node(l, d, r) => if (d < n) Node(l, d, delete(r,n)) else if (d > n) Node(delete(l,n), d, r) else { // if not leaf
+      // if d < n, node to delete must be in right subtree, keep current l and update r, opposite case for d > n
+      val (r1, m) = deleteMin(r) // if d == n, delete the min from the right subtree and get new right tree and min val
+      Node(l, m, r1) // left subtree is same as old node, make new node with left tree l, value == minRight and right tree == new right from deleteMin
     }
   }
 
   /* JavaScripty */
 
-  def eval(e: Expr): Double = e match {
-    case N(n) => ???
-    case _ => ???
+  def eval(e: Expr): Double = e match {   // evaluates to double precision floating point value of e
+    case N(n) => n
+    case Unary(Neg, e1) => -eval(e1) // returns opposite of whatever eval(e1) returns (if eval is N(n) then just negative)
+    case Binary(Plus, e1, e2) => eval(e1) + eval(e2)
+    case Binary(Minus, e1, e2) => eval(e1) - eval(e2)
+    case Binary(Times, e1, e2) => eval(e1)*eval(e2)
+    case Binary(Div, e1, e2) => eval(e1)/eval(e2)
   }
 
  // Interface to run your interpreter from a string.  This is convenient
