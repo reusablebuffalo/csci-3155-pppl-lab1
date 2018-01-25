@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Principles and Practice in Programming Languages
 # Lab 1
 
