@@ -25,6 +25,47 @@ println {
 
 scala.math.pow(2,5)
 
+1
+
+if (false) {
+  1 // evaluate to 1 (not do this)
+} else {
+  2 // evaluate to 2 (not do that)
+}
+
+true match {
+  case true => 1
+  case false => 2
+}
+
+true
+
+// RECITATION 2
+// if else in scala is just ternary operator x ? 1 : 2
+sealed abstract class SearchTree
+case object Empty extends SearchTree
+case class Node(l: SearchTree, d: Int, r: SearchTree) extends SearchTree
+
+def height(t: SearchTree): Int =
+  t match {
+    case Empty => 0
+    case Node(l@Node(_,_,_),_,_) => l.d
+    case Node(l ,_ ,r) => 1 + math.max(height(l), height(r))
+    /*
+    val l_height = height(l)
+    val r_height = height(r)
+    1 + math.max(l_height, r_height)
+     */
+  }
+
+/* 3 ways to declare a variable in scala
+
+1) val/var (var a = 1)
+2) parameters def f(param)
+3) case statements
+
+*/
+
 // The worksheet is built with all of the project files, so we can call
 // a function from your jsy.student.Lab1 object (in Lab1.scala).
 jsy.student.Lab1.plus(3, 4)
@@ -65,6 +106,8 @@ assert {
     case _ => false
   }
 }
+
+//eval("1+1")
 
 // Evaluate that JavaScripty expression.
 //eval(negFourAST)

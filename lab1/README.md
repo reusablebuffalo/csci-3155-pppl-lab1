@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Principles and Practice in Programming Languages
 # Lab 1
 
@@ -270,3 +271,6 @@ While not officially supported, we will try to help with native installs. Please
 ### Why is the editor in IntelliJ is not allowing me to write anything.
 
 Do you have the Vim Emulator mode turned on? Look under `Tools > Vim Emulator`. If you don't know what Vim is, then you should turn this option off.
+=======
+# csci-3155-pppl-labs
+>>>>>>> 546ea5c59e5006719d62012abc7815ba7349f902

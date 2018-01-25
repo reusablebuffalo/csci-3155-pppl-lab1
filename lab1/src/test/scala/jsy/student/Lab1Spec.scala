@@ -150,6 +150,9 @@ class Lab1Spec(lab1: Lab1Like) extends FlatSpec {
   val t9 = Node(Empty, 2, Node(Empty, 3, Empty))
   val t10 = Node(Node(Empty, 1, Empty), 2, Empty)
   val t11 = Node(Node(Empty, 1, Empty), 3, Empty)
+  // custom test trees
+  val t12 = Node(Empty, 4, Node(Empty, 4, Node(Empty, 4, Node(Empty, 4, Node(Empty, 4, Empty)))))
+  val t13 = Node(Node(Empty,1,Node(Node(Empty,2,Empty),3,Node(Empty,4,Empty))),5,Node(Node(Empty,6,Empty),7, Node(Empty, 8, Empty)))
 
   // repOk
 
@@ -160,6 +163,8 @@ class Lab1Spec(lab1: Lab1Like) extends FlatSpec {
     assert(!repOk(t3))
     assert(repOk(t4))
     assert(repOk(t5))
+    assert(repOk(t12)) // custom test case, should be valid as we can have >= in right subtree
+    assert(repOk(t13))
   }
 
   // insertion
@@ -178,6 +183,8 @@ class Lab1Spec(lab1: Lab1Like) extends FlatSpec {
     assert(deleteMin(t1) === (Empty, 2))
     assert(deleteMin(t5) === (t1, 2))
     assert(deleteMin(t4) === (Node(Empty, 4, Node(Empty, 4, Node(Empty, 5, Empty))), 2))
+    assert(deleteMin(t12) === (Node(Empty, 4, Node(Empty, 4, Node(Empty, 4, Node(Empty, 4, Empty)))), 4))
+    assert(deleteMin(t13) === (Node(Node(Node(Empty,2,Empty),3,Node(Empty,4,Empty)),5,Node(Node(Empty,6,Empty),7, Node(Empty, 8, Empty))), 1))
   }
 
   // delete

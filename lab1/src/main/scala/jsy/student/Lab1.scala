@@ -95,8 +95,11 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
   }
 
   def sqrtErr(c: Double, x0: Double, epsilon: Double): Double = {
+    def sqrtErrHelper(c : Double, xi : Double, epsilon : Double) : Double = { // recursive helper function
+      if(abs(math.pow(xi,2) - c) < epsilon) xi else sqrtErrHelper(c, sqrtStep(c, xi), epsilon) // if err not small enough, step again
+    }
     require(epsilon > 0) // epsilon must be greater than zero
-    2.0
+    sqrtErrHelper(c, x0, epsilon)
   }
 
   def sqrt(c: Double): Double = {
@@ -115,20 +118,24 @@ object Lab1 extends jsy.util.JsyApplication with jsy.lab1.Lab1Like {
   def repOk(t: SearchTree): Boolean = {
     def check(t: SearchTree, min: Int, max: Int): Boolean = t match {
       case Empty => true
-      case Node(l, d, r) => ???
+      case Node(l, d, r) => (d >= min) && (d < max) && check(l, min, d) && check(r, d, max)
     }
     check(t, Int.MinValue, Int.MaxValue)
   }
 
-  def insert(t: SearchTree, n: Int): SearchTree = ???
+  def insert(t: SearchTree, n: Int): SearchTree = t match {
+    case Empty => Node(Empty, n, Empty) // base case, once reach an empty node, return this node
+    case Node(l,d,r) => if (n < d) Node(insert(l, n), d, r) else Node(l, d, insert(r,n)) // if n is less than d, construct left subtree
+    // otherwise construct right subtree
+  }
 
   def deleteMin(t: SearchTree): (SearchTree, Int) = {
     require(t != Empty)
     (t: @unchecked) match {
       case Node(Empty, d, r) => (r, d)
       case Node(l, d, r) =>
-        val (l1, m) = deleteMin(l)
-        ???
+        val (l1, m) = deleteMin(l) // returns right subtree of node to be deleted (and its value)
+        (Node(l1, d ,r), m) // this right subtree becomes parent's left subtree and parent's right subtree remains the same
     }
   }
 
