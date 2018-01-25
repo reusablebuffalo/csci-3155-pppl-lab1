@@ -1,1 +1,1 @@
-# csci-3155-pppl-labs
+# csci-3155-pppl-lab1
